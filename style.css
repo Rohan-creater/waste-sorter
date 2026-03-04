@@ -1,0 +1,196 @@
+/* ================= BACKGROUND ================= */
+
+body{
+ margin:0;
+ font-family:'Segoe UI',sans-serif;
+ color:white;
+ text-align:center;
+ overflow:hidden;
+ background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+ height:100vh;
+}
+
+.bg-shape{
+ position:absolute;
+ border-radius:50%;
+ filter:blur(120px);
+ opacity:.5;
+}
+.s1{width:400px;height:400px;background:#4caf50;top:-100px;left:-100px;}
+.s2{width:350px;height:350px;background:#00c6ff;bottom:-100px;right:-100px;}
+
+.panel{
+ backdrop-filter:blur(12px);
+ background:rgba(255,255,255,0.08);
+ border-radius:15px;
+ padding:15px;
+ margin:15px auto;
+ width:80%;
+ box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+.bin{
+ width:140px;
+ height:140px;
+ display:inline-flex;
+ justify-content:center;
+ align-items:center;
+ margin:14px;
+ border-radius:20px;
+ cursor:pointer;
+ background:rgba(255,255,255,0.08);
+ border:1px solid rgba(255,255,255,0.25);
+ transition:.3s;
+ font-weight:600;
+ position:relative;
+ overflow:hidden;
+}
+
+.bin::before{
+ content:"";
+ position:absolute;
+ top:0;
+ left:-120%;
+ width:60%;
+ height:100%;
+ background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);
+ transform:skewX(-25deg);
+}
+
+.bin:hover::before{ animation:shineMove .8s forwards; }
+
+@keyframes shineMove{
+0%{left:-120%;}
+100%{left:140%;}
+}
+
+.bin:hover{
+ transform:translateY(-10px) scale(1.05);
+ box-shadow:0 0 20px rgba(255,255,255,.4),0 0 40px rgba(255,255,255,.25);
+}
+
+[data-bin="Wet"]{border-top:4px solid #4caf50;}
+[data-bin="Dry"]{border-top:4px solid #2196f3;}
+[data-bin="Hazardous"]{border-top:4px solid #ff5252;}
+[data-bin="E-Waste"]{border-top:4px solid #9c27b0;}
+[data-bin="Recycle"]{border-top:4px solid #ffc107;}
+
+#currentItem{
+ background:rgba(255,255,255,0.12);
+ padding:15px;
+ border-radius:12px;
+ cursor:grab;
+ display:inline-block;
+}
+
+button{
+ padding:8px 14px;
+ border:none;
+ border-radius:8px;
+ background:rgba(255,255,255,0.15);
+ color:white;
+ cursor:pointer;
+}
+
+/* SMART BIN */
+
+#cartoonBin{
+ position:absolute;
+ bottom:15px;
+ left:50%;
+ transform:translateX(-50%);
+ animation:idleMove 4s ease-in-out infinite;
+}
+
+@keyframes idleMove{
+0%,100%{transform:translate(-50%,0);}
+50%{transform:translate(-50%,-5px);}
+}
+
+.binBody{
+ width:130px;
+ height:160px;
+ background:linear-gradient(#9e9e9e,#616161);
+ border-radius:18px 18px 30px 30px;
+ position:relative;
+ box-shadow:inset -5px -10px 20px rgba(0,0,0,.4),
+ inset 5px 5px 15px rgba(255,255,255,.2),
+ 0 10px 25px rgba(0,0,0,.5);
+ animation:breath 3s infinite ease-in-out;
+}
+
+.binLid{
+ position:absolute;
+ width:150px;
+ height:25px;
+ background:#424242;
+ top:-18px;
+ left:-10px;
+ border-radius:8px;
+ transform-origin:left center;
+ transition:.4s;
+}
+
+.open{transform:rotate(-25deg);}
+
+.eyes{
+ display:flex;
+ justify-content:center;
+ gap:18px;
+ margin-top:45px;
+}
+
+.eye{
+ width:18px;
+ height:18px;
+ background:white;
+ border-radius:50%;
+ overflow:hidden;
+ animation:blink 4s infinite;
+ position:relative;
+}
+
+.pupil{
+ width:8px;
+ height:8px;
+ background:black;
+ border-radius:50%;
+ position:absolute;
+ top:5px;
+ left:5px;
+ transition:.08s linear;
+}
+
+@keyframes blink{
+0%,92%,100%{height:18px;}
+95%{height:3px;}
+}
+
+.mouth{
+ width:40px;
+ height:12px;
+ background:#111;
+ margin:12px auto;
+ border-radius:0 0 25px 25px;
+ transition:.3s;
+}
+
+.happy{height:18px;}
+.sad{border-radius:25px 25px 0 0;height:8px;}
+
+@keyframes breath{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-6px);}
+}
+
+.jump{animation:jump .5s;}
+@keyframes jump{50%{transform:translateY(-20px);}}
+
+.binShake{animation:binShake .4s;}
+@keyframes binShake{
+25%{transform:translateX(-6px);}
+50%{transform:translateX(6px);}
+75%{transform:translateX(-6px);}
+}
+
+.hidden{display:none;}

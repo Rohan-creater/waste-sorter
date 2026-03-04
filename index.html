@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aesthetic Waste Sorter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="bg-shape s1"></div>
+<div class="bg-shape s2"></div>
+
+<h1>♻️ Waste Sorter</h1>
+
+<div id="cartoonBin">
+ <div class="binBody" id="binBody">
+  <div class="binLid" id="binLid"></div>
+
+  <div class="eyes">
+   <div class="eye"><div class="pupil"></div></div>
+   <div class="eye"><div class="pupil"></div></div>
+  </div>
+
+  <div class="mouth" id="binMouth"></div>
+ </div>
+</div>
+
+<div class="panel">
+Score:<span id="score">0</span> |
+Combo:<span id="combo">0</span> |
+Lives:<span id="lives">3 ❤️</span> |
+Time:<span id="timer">60</span>
+<br><br>
+
+<button id="startBtn">Start</button>
+<button id="restartBtn" class="hidden">Restart</button>
+</div>
+
+<div id="gameArea" class="panel hidden">
+
+<div id="currentItem" draggable="true">Drag Item</div>
+<br>
+
+<div class="bin" data-bin="Wet">Wet</div>
+<div class="bin" data-bin="Dry">Dry</div>
+<div class="bin" data-bin="Hazardous">Hazardous</div>
+<div class="bin" data-bin="E-Waste">E-Waste</div>
+<div class="bin" data-bin="Recycle">Recycle</div>
+
+</div>
+
+<h2 id="endScreen"></h2>
+
+<script src="script.js"></script>
+</body>
+</html>
