@@ -96,10 +96,17 @@ restartBtn.onclick=startGame;
 
 function startGame(){
 
- bgMusic.volume = 0.15;  // soothing volume
+ // Reset & start music from beginning
+ bgMusic.pause();
+ bgMusic.currentTime = 0;
+ bgMusic.volume = 0.15;
+ bgMusic.loop = true;
  bgMusic.play();
 
- score=0;combo=0;lives=3;timeLeft=60;
+ score=0;
+ combo=0;
+ lives=3;
+ timeLeft=60;
 
  scoreEl.innerText=0;
  comboEl.innerText=0;
@@ -156,16 +163,14 @@ function startTimer(){
 }
 
 function endGame(msg){
+
  clearInterval(gameInterval);
 
- endScreen.innerText=msg+" | Score: "+score;
+ // Stop music completely
+ bgMusic.pause();
+
+ endScreen.innerText = msg + " | Score: " + score;
 
  restartBtn.classList.remove("hidden");
 }
-
-bgMusic.addEventListener("pause", () => {
-  if(timeLeft > 0){
-    bgMusic.play();
-  }
-});
 
