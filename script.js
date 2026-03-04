@@ -162,3 +162,10 @@ function endGame(msg){
 
  restartBtn.classList.remove("hidden");
 }
+
+bgMusic.addEventListener("pause", () => {
+  if(timeLeft > 0){
+    bgMusic.play();
+  }
+});
+
